@@ -1,0 +1,28 @@
+apiVersion: ec2.aws.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: ec2-instance-public
+spec:
+  forProvider:
+    region: us-east-1
+    imageId: ami-053b0d53c279acc90kub
+    instanceType: t2.micro
+    keyName: my-crossplane-key-pair
+    subnetId: subnet-0287dc713c5ed0c9a
+  providerConfigRef:
+    name: awsconfig
+
+---
+apiVersion: ec2.aws.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: ec2-instance-private
+spec:
+  forProvider:
+    region: us-east-1
+    imageId: ami-053b0d53c279acc90
+    instanceType: t2.micro
+    keyName: my-crossplane-key-pair
+    subnetId: subnet-0c374f42978a883b7    
+  providerConfigRef:
+    name: awsconfig  
